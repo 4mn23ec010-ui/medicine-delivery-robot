@@ -1,0 +1,643 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+
+    background:
+        radial-gradient(
+            circle at top,
+            #123944,
+            #061b22 55%,
+            #04151b
+        );
+
+    color: #edf7f8;
+
+    min-height: 100vh;
+}
+
+
+/* ================= HEADER ================= */
+
+header {
+
+    height: 80px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 0 6%;
+
+    border-bottom: 1px solid #29434a;
+
+    background: rgba(5, 25, 31, 0.8);
+}
+
+.logo {
+
+    font-size: 20px;
+
+    font-weight: bold;
+
+    letter-spacing: 0.5px;
+}
+
+
+nav {
+
+    display: flex;
+
+    gap: 10px;
+}
+
+
+.tab {
+
+    background: transparent;
+
+    color: #c2d1d4;
+
+    border: none;
+
+    padding: 12px 22px;
+
+    border-radius: 8px;
+
+    font-size: 16px;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.tab:hover {
+
+    background: #183943;
+}
+
+
+.tab.active {
+
+    background: #78e5df;
+
+    color: #09242a;
+
+    font-weight: bold;
+}
+
+
+/* ================= GENERAL ================= */
+
+.panel {
+
+    width: 72%;
+
+    max-width: 1050px;
+
+    margin: 45px auto;
+
+}
+
+
+.hidden {
+
+    display: none;
+}
+
+
+section {
+
+    margin-bottom: 50px;
+}
+
+
+h2 {
+
+    font-size: 23px;
+
+    margin-bottom: 24px;
+}
+
+
+/* ================= NURSE ================= */
+
+.request-section {
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(15, 52, 62, 0.95),
+            rgba(7, 36, 45, 0.95)
+        );
+
+    border: 1px solid #244951;
+
+    border-radius: 8px;
+
+    padding: 35px;
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,0.25);
+}
+
+
+.form-grid {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 30px;
+}
+
+
+label {
+
+    display: block;
+
+    color: #9bb6bb;
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+    letter-spacing: 1.5px;
+
+    margin-bottom: 10px;
+
+    margin-top: 20px;
+}
+
+
+input,
+select {
+
+    width: 100%;
+
+    background: #123641;
+
+    border: 1px solid #31545c;
+
+    color: white;
+
+    padding: 15px 18px;
+
+    border-radius: 6px;
+
+    font-size: 16px;
+
+    outline: none;
+}
+
+
+input:focus,
+select:focus {
+
+    border-color: #70ded8;
+}
+
+
+.medicine-row {
+
+    display: grid;
+
+    grid-template-columns: 1fr 90px auto;
+
+    align-items: end;
+
+    gap: 15px;
+
+    margin-top: 10px;
+}
+
+
+.medicine-row label {
+
+    margin-top: 0;
+}
+
+
+.add-btn {
+
+    height: 49px;
+
+    padding: 0 22px;
+
+    background: transparent;
+
+    color: #dceced;
+
+    border: 1px solid #31545c;
+
+    border-radius: 6px;
+
+    cursor: pointer;
+
+    white-space: nowrap;
+
+    font-size: 15px;
+}
+
+
+.add-btn:hover {
+
+    background: #193e47;
+}
+
+
+/* MEDICINE LIST */
+
+.medicine-list {
+
+    min-height: 75px;
+
+    border-top: 1px dashed #36565d;
+
+    border-bottom: 1px dashed #36565d;
+
+    margin-top: 28px;
+
+    padding: 22px;
+
+    text-align: center;
+
+    color: #bdced1;
+}
+
+
+.medicine-item {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    background: #123640;
+
+    padding: 12px 15px;
+
+    margin-bottom: 8px;
+
+    border-radius: 5px;
+
+    text-align: left;
+}
+
+
+.remove-btn {
+
+    border: none;
+
+    background: transparent;
+
+    color: #ff9b9b;
+
+    cursor: pointer;
+}
+
+
+.request-btn {
+
+    margin-top: 28px;
+
+    background: #78e5df;
+
+    color: #09242a;
+
+    border: none;
+
+    border-radius: 7px;
+
+    padding: 15px 25px;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+
+.request-btn:hover {
+
+    background: #91eee9;
+}
+
+
+/* MY REQUESTS */
+
+.requests-section {
+
+    padding: 5px;
+}
+
+
+#myRequests {
+
+    border-top: 1px solid #244951;
+
+    padding-top: 25px;
+
+    color: #aabdc0;
+}
+
+
+.request-card {
+
+    background: #0b2b35;
+
+    border: 1px solid #274c55;
+
+    border-radius: 7px;
+
+    padding: 20px;
+
+    margin-bottom: 15px;
+}
+
+
+.request-card strong {
+
+    color: white;
+}
+
+
+.badge {
+
+    display: inline-block;
+
+    padding: 5px 10px;
+
+    border-radius: 20px;
+
+    font-size: 12px;
+
+    background: #183f48;
+
+    color: #8fe5df;
+
+    margin-left: 10px;
+}
+
+
+/* ================= PHARMACIST ================= */
+
+#pharmacist section {
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(12, 44, 53, 0.95),
+            rgba(6, 28, 36, 0.95)
+        );
+
+    border: 1px solid #244951;
+
+    border-radius: 8px;
+
+    padding: 32px;
+}
+
+
+.status-title {
+
+    color: #79d8d4;
+
+    font-family: monospace;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 15px;
+}
+
+
+.empty-box {
+
+    min-height: 105px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-top: 1px solid #294a52;
+
+    color: #b6c8ca;
+}
+
+
+.pharmacist-card {
+
+    background: #123641;
+
+    border: 1px solid #31545c;
+
+    border-radius: 7px;
+
+    padding: 20px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 20px;
+}
+
+
+.load-btn {
+
+    background: #78e5df;
+
+    color: #09242a;
+
+    border: none;
+
+    padding: 12px 18px;
+
+    border-radius: 6px;
+
+    cursor: pointer;
+
+    font-weight: bold;
+}
+
+
+/* ================= ROBOT ================= */
+
+.robot-section {
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(12, 44, 53, 0.95),
+            rgba(6, 28, 36, 0.95)
+        );
+
+    border: 1px solid #244951;
+
+    border-radius: 8px;
+
+    padding: 35px;
+}
+
+
+.robot-display {
+
+    min-height: 230px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    background: #08252e;
+
+    border: 1px solid #294b54;
+
+    border-radius: 6px;
+
+    color: #d6e5e7;
+
+    font-size: 19px;
+
+    padding: 30px;
+}
+
+
+.robot-controls {
+
+    text-align: center;
+
+    margin-top: 30px;
+}
+
+
+.robot-controls button {
+
+    background: #123640;
+
+    color: white;
+
+    border: 1px solid #31545c;
+
+    padding: 13px 20px;
+
+    margin: 5px;
+
+    border-radius: 6px;
+
+    cursor: pointer;
+}
+
+
+.robot-controls button:hover {
+
+    background: #1c4853;
+}
+
+
+.robot-controls button:nth-child(2) {
+
+    background: #78e5df;
+
+    color: #09242a;
+
+    font-weight: bold;
+}
+
+
+/* ================= FOOTER ================= */
+
+footer {
+
+    text-align: center;
+
+    padding: 45px 20px;
+
+    color: #8ba9ad;
+
+    font-family: monospace;
+
+    font-size: 13px;
+
+    letter-spacing: 1px;
+}
+
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 800px) {
+
+    header {
+
+        height: auto;
+
+        padding: 20px;
+
+        flex-direction: column;
+
+        gap: 20px;
+    }
+
+
+    nav {
+
+        width: 100%;
+    }
+
+
+    .nav-btn {
+
+        flex: 1;
+
+        padding: 12px 5px;
+
+        font-size: 14px;
+    }
+
+
+    .panel {
+
+        width: 92%;
+
+        margin-top: 25px;
+    }
+
+
+    .form-grid {
+
+        grid-template-columns: 1fr;
+    }
+
+
+    .medicine-row {
+
+        grid-template-columns: 1fr;
+    }
+
+
+    .add-btn {
+
+        width: 100%;
+    }
+
+
+    .request-section,
+    #pharmacist section,
+    .robot-section {
+
+        padding: 22px;
+    }
+}

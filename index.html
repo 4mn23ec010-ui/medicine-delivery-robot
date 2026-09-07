@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMDR Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <header>
+        <h1>● AMDR DASHBOARD</h1>
+
+        <nav>
+            <button class="tab active" onclick="showPanel('nurse')">
+                Nurse
+            </button>
+
+            <button class="tab" onclick="showPanel('pharmacist')">
+                Pharmacist
+            </button>
+
+            <button class="tab" onclick="showPanel('robot')">
+                Robot Panel
+            </button>
+        </nav>
+    </header>
+
+
+    <!-- NURSE PANEL -->
+    <section id="nurse" class="panel">
+
+        <div class="card">
+
+            <h2>Medicine Delivery Request</h2>
+
+            <label>WARD / ROOM NO.</label>
+            <input type="text" id="room" placeholder="204">
+
+            <label>PATIENT ID / NAME</label>
+            <input type="text" id="patient"
+                   placeholder="P102 - Ramesh Kumar">
+
+            <label>PRIORITY</label>
+            <select id="priority">
+                <option>Normal</option>
+                <option>Urgent</option>
+                <option>Emergency</option>
+            </select>
+
+            <div class="medicine-row">
+
+                <div>
+                    <label>MEDICINE</label>
+
+                    <select id="medicine">
+                        <option>Paracetamol 500mg — ₹5</option>
+                        <option>Amoxicillin 500mg</option>
+                        <option>Cetirizine 10mg</option>
+                        <option>Vitamin C</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label>QTY</label>
+                    <input type="number"
+                           id="quantity"
+                           value="1"
+                           min="1">
+                </div>
+
+            </div>
+
+            <button type="button" onclick="addMedicine()">+ Add to List</button>
+            <div id="medicineList">
+                <p>No medicines added yet.</p>
+            </div>
+
+            <button type="button" onclick="requestMedicine()">Request Medicine</button>
+        </div>
+
+
+        <div class="card">
+
+            <h2>My Delivery Requests</h2>
+
+            <div id="requests">
+                <p>No requests yet — submit one above.</p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PHARMACIST PANEL -->
+    <section id="pharmacist" class="panel hidden">
+
+        <div class="card">
+
+            <h2>Incoming Requests</h2>
+
+            <div id="pharmacistRequests">
+                <p>No new requests.</p>
+            </div>
+
+        </div>
+
+        <div class="card">
+
+            <h2>Loaded — Ready to Dispatch</h2>
+
+            <div id="loaded">
+                <p>Nothing loaded yet.</p>
+            </div>
+
+        </div>
+
+        <div class="card">
+
+            <h2>In Progress</h2>
+
+            <div id="progress">
+                <p>No active deliveries.</p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ROBOT PANEL -->
+    <section id="robot" class="panel hidden">
+
+        <div class="card">
+
+            <h2>Robot On-Board Display</h2>
+
+            <div id="robotStatus">
+                <p>No active delivery. Robot is docked and idle.</p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <footer>
+        AUTONOMOUS MEDICINE DELIVERY ROBOT — LIVE DASHBOARD PROTOTYPE
+    </footer>
+
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
