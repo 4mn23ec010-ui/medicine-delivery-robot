@@ -49,11 +49,8 @@ function showPanel(panelName, clickedButton) {
 
 function addMedicine() {
 
-    const medicineElement =
-        document.getElementById("medicine");
-
-    const quantityElement =
-        document.getElementById("quantity");
+    const medicineElement = document.getElementById("medicine");
+    const quantityElement = document.getElementById("quantity");
 
     if (!medicineElement || !quantityElement) {
         alert("Medicine fields not found.");
@@ -61,33 +58,22 @@ function addMedicine() {
     }
 
     const medicine = medicineElement.value;
-
-    const quantity =
-        parseInt(quantityElement.value);
-
+    const quantity = parseInt(quantityElement.value);
 
     // Check quantity
     if (isNaN(quantity) || quantity < 1) {
-
         alert("Please enter a valid quantity.");
-
         return;
     }
 
-
     // Add medicine
     medicineList.push({
-
         medicine: medicine,
-
         quantity: quantity
-
     });
-
 
     // Display updated list
     displayMedicineList();
-
 
     // Confirmation
     alert("Medicine added to list successfully!");
@@ -100,39 +86,29 @@ function addMedicine() {
 
 function displayMedicineList() {
 
-    const list =
-        document.getElementById("medicineList");
+    const list = document.getElementById("medicineList");
 
     if (!list) {
         return;
     }
 
-
     // No medicines
     if (medicineList.length === 0) {
-
-        list.innerHTML =
-            "<p>No medicines added yet.</p>";
-
+        list.innerHTML = "<p>No medicines added yet.</p>";
         return;
     }
-
 
     // Clear old list
     list.innerHTML = "";
 
-
     // Display every medicine
     medicineList.forEach(function(item, index) {
 
-        const div =
-            document.createElement("div");
+        const div = document.createElement("div");
 
         div.className = "medicine-item";
 
-
         div.innerHTML = `
-
             <span>
                 ${item.medicine}
                 × ${item.quantity}
@@ -140,17 +116,13 @@ function displayMedicineList() {
 
             <button
                 class="remove-btn"
-                onclick="removeMedicine(${index})">
-
+                onclick="removeMedicine(${index})"
+            >
                 Remove
-
             </button>
-
         `;
 
-
         list.appendChild(div);
-
     });
 }
 
@@ -164,7 +136,6 @@ function removeMedicine(index) {
     medicineList.splice(index, 1);
 
     displayMedicineList();
-
 }
 
 
@@ -174,62 +145,34 @@ function removeMedicine(index) {
 
 function requestMedicine() {
 
-    const roomElement =
-        document.getElementById("room");
+    const roomElement = document.getElementById("room");
+    const patientElement = document.getElementById("patient");
 
-    const patientElement =
-        document.getElementById("patient");
-
-    const priorityElement =
-        document.getElementById("priority");
-
-
-    if (!roomElement ||
-        !patientElement ||
-        !priorityElement) {
-
+    if (!roomElement || !patientElement) {
         alert("Required fields are missing.");
-
         return;
     }
 
-
-    const room =
-        roomElement.value.trim();
-
-    const patient =
-        patientElement.value.trim();
-
-    const priority =
-        priorityElement.value;
-
+    const room = roomElement.value.trim();
+    const patient = patientElement.value.trim();
 
     // Check room
     if (room === "") {
-
         alert("Please enter Ward / Room No.");
-
         return;
     }
-
 
     // Check patient
     if (patient === "") {
-
         alert("Please enter Patient ID / Name.");
-
         return;
     }
-
 
     // Check medicine
     if (medicineList.length === 0) {
-
         alert("Please add at least one medicine.");
-
         return;
     }
-
 
     // Create request
     const request = {
@@ -243,39 +186,27 @@ function requestMedicine() {
 
         patient: patient,
 
-        priority: priority,
-
         medicines:
             JSON.parse(
                 JSON.stringify(medicineList)
             ),
 
         status: "Awaiting Loading"
-
     };
-
 
     // Save request
     deliveryRequests.push(request);
 
-
     // Clear medicine list
     medicineList = [];
 
-
     // Update screens
     displayMedicineList();
-
     displayMyRequests();
-
     displayPharmacistRequests();
 
-
     // Success message
-    alert(
-        "Medicine request submitted successfully!"
-    );
-
+    alert("Medicine request submitted successfully!");
 }
 
 
@@ -285,13 +216,11 @@ function requestMedicine() {
 
 function displayMyRequests() {
 
-    const container =
-        document.getElementById("requests");
+    const container = document.getElementById("requests");
 
     if (!container) {
         return;
     }
-
 
     if (deliveryRequests.length === 0) {
 
@@ -301,20 +230,15 @@ function displayMyRequests() {
         return;
     }
 
-
     container.innerHTML = "";
-
 
     deliveryRequests.forEach(function(request) {
 
-        const div =
-            document.createElement("div");
+        const div = document.createElement("div");
 
         div.className = "request-card";
 
-
         let medicines = "";
-
 
         request.medicines.forEach(function(item) {
 
@@ -323,9 +247,7 @@ function displayMyRequests() {
                 " × " +
                 item.quantity +
                 "<br>";
-
         });
-
 
         div.innerHTML = `
 
@@ -342,11 +264,6 @@ function displayMyRequests() {
             </p>
 
             <p>
-                <b>Priority:</b>
-                ${request.priority}
-            </p>
-
-            <p>
                 <b>Medicine:</b><br>
                 ${medicines}
             </p>
@@ -358,9 +275,7 @@ function displayMyRequests() {
 
         `;
 
-
         container.appendChild(div);
-
     });
 }
 
@@ -372,23 +287,18 @@ function displayMyRequests() {
 function displayPharmacistRequests() {
 
     const container =
-        document.getElementById(
-            "pharmacistRequests"
-        );
+        document.getElementById("pharmacistRequests");
 
     if (!container) {
         return;
     }
-
 
     const pendingRequests =
         deliveryRequests.filter(function(request) {
 
             return request.status ===
                 "Awaiting Loading";
-
         });
-
 
     if (pendingRequests.length === 0) {
 
@@ -398,18 +308,13 @@ function displayPharmacistRequests() {
         return;
     }
 
-
     container.innerHTML = "";
-
 
     pendingRequests.forEach(function(request) {
 
-        const div =
-            document.createElement("div");
+        const div = document.createElement("div");
 
-        div.className =
-            "pharmacist-card";
-
+        div.className = "pharmacist-card";
 
         div.innerHTML = `
 
@@ -427,27 +332,18 @@ function displayPharmacistRequests() {
                     ${request.patient}
                 </p>
 
-                <p>
-                    <b>Priority:</b>
-                    ${request.priority}
-                </p>
-
             </div>
-
 
             <button
                 class="load-btn"
-                onclick="loadMedicine('${request.id}')">
-
+                onclick="loadMedicine('${request.id}')"
+            >
                 Load Medicine
-
             </button>
 
         `;
 
-
         container.appendChild(div);
-
     });
 }
 
@@ -462,36 +358,26 @@ function loadMedicine(requestID) {
         deliveryRequests.find(function(item) {
 
             return item.id === requestID;
-
         });
 
-
     if (!request) {
-
         alert("Request not found.");
-
         return;
     }
-
 
     // Change status
     request.status =
         "Loaded — Ready to Dispatch";
 
-
     // Refresh screens
     displayMyRequests();
-
     displayPharmacistRequests();
-
     displayLoadedRequests();
-
 
     alert(
         request.id +
         " medicine loaded successfully."
     );
-
 }
 
 
@@ -508,15 +394,12 @@ function displayLoadedRequests() {
         return;
     }
 
-
     const loadedRequests =
         deliveryRequests.filter(function(request) {
 
             return request.status ===
                 "Loaded — Ready to Dispatch";
-
         });
-
 
     if (loadedRequests.length === 0) {
 
@@ -526,18 +409,13 @@ function displayLoadedRequests() {
         return;
     }
 
-
     container.innerHTML = "";
-
 
     loadedRequests.forEach(function(request) {
 
-        const div =
-            document.createElement("div");
+        const div = document.createElement("div");
 
-        div.className =
-            "pharmacist-card";
-
+        div.className = "pharmacist-card";
 
         div.innerHTML = `
 
@@ -557,20 +435,16 @@ function displayLoadedRequests() {
 
             </div>
 
-
             <button
                 class="load-btn"
-                onclick="dispatchRobot('${request.id}')">
-
+                onclick="dispatchRobot('${request.id}')"
+            >
                 Dispatch Robot
-
             </button>
 
         `;
 
-
         container.appendChild(div);
-
     });
 }
 
@@ -585,50 +459,34 @@ function dispatchRobot(requestID) {
         deliveryRequests.find(function(item) {
 
             return item.id === requestID;
-
         });
 
-
     if (!request) {
-
         alert("Request not found.");
-
         return;
     }
-
 
     // Change status
     request.status = "In Progress";
 
-
     // Update displays
     displayMyRequests();
-
     displayLoadedRequests();
-
     displayProgressRequests();
-
 
     // Update robot screen
     updateRobotDisplay(request);
-
 
     // Automatically simulate delivery
     setTimeout(function() {
 
         request.status = "Delivered";
 
-
         displayMyRequests();
-
         displayProgressRequests();
 
-
         const robotDisplay =
-            document.getElementById(
-                "robotStatus"
-            );
-
+            document.getElementById("robotStatus");
 
         if (robotDisplay) {
 
@@ -660,11 +518,9 @@ function dispatchRobot(requestID) {
                 </p>
 
             `;
-
         }
 
     }, 8000);
-
 }
 
 
@@ -675,14 +531,11 @@ function dispatchRobot(requestID) {
 function updateRobotDisplay(request) {
 
     const display =
-        document.getElementById(
-            "robotStatus"
-        );
+        document.getElementById("robotStatus");
 
     if (!display) {
         return;
     }
-
 
     display.innerHTML = `
 
@@ -713,7 +566,6 @@ function updateRobotDisplay(request) {
         </p>
 
     `;
-
 }
 
 
@@ -730,15 +582,12 @@ function displayProgressRequests() {
         return;
     }
 
-
     const activeRequests =
         deliveryRequests.filter(function(request) {
 
             return request.status ===
                 "In Progress";
-
         });
-
 
     if (activeRequests.length === 0) {
 
@@ -748,18 +597,13 @@ function displayProgressRequests() {
         return;
     }
 
-
     container.innerHTML = "";
-
 
     activeRequests.forEach(function(request) {
 
-        const div =
-            document.createElement("div");
+        const div = document.createElement("div");
 
-        div.className =
-            "pharmacist-card";
-
+        div.className = "pharmacist-card";
 
         div.innerHTML = `
 
@@ -785,11 +629,45 @@ function displayProgressRequests() {
 
         `;
 
-
         container.appendChild(div);
-
     });
+}
 
+
+// ==========================================
+// LOGIN
+// ==========================================
+
+function loginUser() {
+
+    const userId =
+        document.getElementById("userId").value.trim();
+
+    const password =
+        document.getElementById("password").value;
+
+    if (userId === "admin" &&
+        password === "1234") {
+
+        document.getElementById(
+            "loginPage"
+        ).style.display = "none";
+
+        document.getElementById(
+            "dashboard"
+        ).style.display = "block";
+
+        document.getElementById(
+            "loginMessage"
+        ).innerText = "";
+
+    } else {
+
+        document.getElementById(
+            "loginMessage"
+        ).innerText =
+            "Invalid User ID or Password.";
+    }
 }
 
 
