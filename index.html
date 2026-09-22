@@ -291,9 +291,32 @@
 
 </div>
 
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
+    import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-database.js";
+    const firebaseConfig = {
+        apiKey: "AIzaSyBgBoc_j_1Qd9bn5MVhLS4Wwnx9IQYj-lA",
+        authDomain: "medicine-delivery-robot-b328e.firebaseapp.com",
+        projectId: "medicine-delivery-robot-b328e",
+        storageBucket: "medicine-delivery-robot-b328e.firebasestorage.app",
+        messagingSenderId: "393627652256",
+        appId: "1:393627652256:web:acb33ddff687e552b739c5",
+        measurementId: "G-7DYXZXW09E"
+    };
+
+    const app = initializeApp(firebaseConfig);
+
+    const database = getDatabase(
+    app,
+    "https://medicine-delivery-robot-b328e-default-rtdb.firebaseio.com"
+);
+
+window.firebaseDatabase = database;
+
+set(ref(database, "robot/status"), "WEB_CONNECTED");
+</script>
 
 <script src="script.js"></script>
 
 </body>
-
 </html>
