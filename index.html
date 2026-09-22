@@ -58,31 +58,37 @@
 
         <h1>● AMDR DASHBOARD</h1>
 
-        <nav>
+       <nav>
 
-            <button
-                class="tab active"
-                onclick="showPanel('nurse')"
-            >
-                Nurse
-            </button>
+    <button
+        class="tab active"
+        onclick="showPanel('nurse')"
+    >
+        Nurse
+    </button>
 
-            <button
-                class="tab"
-                onclick="showPanel('pharmacist')"
-            >
-                Pharmacist
-            </button>
+    <button
+        class="tab"
+        onclick="showPanel('pharmacist')"
+    >
+        Pharmacist
+    </button>
 
-            <button
-                class="tab"
-                onclick="showPanel('robot')"
-            >
-                Robot Panel
-            </button>
+    <button
+        class="tab"
+        onclick="showPanel('robot')"
+    >
+        Robot Panel
+    </button>
 
-        </nav>
+    <button
+        class="tab"
+        onclick="showPanel('billing')"
+    >
+        Billing
+    </button>
 
+</nav>
     </header>
 
 
@@ -123,21 +129,20 @@
                     <select id="medicine">
 
                         <option>
-                            Paracetamol 500mg — ₹5
-                        </option>
+    Paracetamol 500mg — ₹5
+</option>
 
-                        <option>
-                            Amoxicillin 500mg
-                        </option>
+<option>
+    Amoxicillin 500mg — ₹6
+</option>
 
-                        <option>
-                            Cetirizine 10mg
-                        </option>
+<option>
+    Cetirizine 10mg — ₹2
+</option>
 
-                        <option>
-                            Vitamin C
-                        </option>
-
+<option>
+    Vitamin C — ₹2
+</option>
                     </select>
 
                 </div>
@@ -273,6 +278,7 @@
 
 </div>
 
+
 <h3>Robot Controls</h3>
 
 <div>
@@ -297,6 +303,39 @@
     </button>
 </div>
     </section>
+<!-- ==========================================
+     BILLING PANEL
+     ========================================== -->
+
+<section
+    id="billing"
+    class="panel hidden"
+>
+
+    <div class="card">
+
+        <h2>Billing</h2>
+
+        <div id="billingDetails">
+
+            <p>
+                No billing information available.
+            </p>
+
+        </div>
+
+        <h3>Total Amount: ₹0</h3>
+
+        <button
+            type="button"
+            onclick="alert('Payment feature coming soon.')"
+        >
+            Pay Now
+        </button>
+
+    </div>
+
+</section>
 
 
     <!-- ==========================================
