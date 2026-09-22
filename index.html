@@ -266,15 +266,36 @@
 
             <div id="robotStatus">
 
-                <p>
-                    No active delivery.
-                    Robot is docked and idle.
-                </p>
+    <p>
+        No active delivery.
+        Robot is docked and idle.
+    </p>
 
-            </div>
+</div>
 
-        </div>
+<h3>Robot Controls</h3>
 
+<div>
+    <button type="button" onclick="sendRobotCommand('FORWARD')">
+        FORWARD
+    </button>
+
+    <button type="button" onclick="sendRobotCommand('BACKWARD')">
+        BACKWARD
+    </button>
+
+    <button type="button" onclick="sendRobotCommand('LEFT')">
+        LEFT
+    </button>
+
+    <button type="button" onclick="sendRobotCommand('RIGHT')">
+        RIGHT
+    </button>
+
+    <button type="button" onclick="sendRobotCommand('STOP')">
+        STOP
+    </button>
+</div>
     </section>
 
 
@@ -312,6 +333,10 @@
 );
 
 window.firebaseDatabase = database;
+
+window.sendRobotCommand = function(command) {
+    set(ref(database, "robot/command"), command);
+};
 
 set(ref(database, "robot/status"), "WEB_CONNECTED");
 </script>
