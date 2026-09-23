@@ -75,6 +75,10 @@ function addMedicine() {
     // Display updated list
     displayMedicineList();
 
+    // Update billing
+    calculateBill();
+
+
     // Confirmation
     alert("Medicine added to list successfully!");
 }
@@ -691,3 +695,49 @@ document.addEventListener(
 
     }
 );
+
+// your existing script.js code
+// ...
+// ...
+// your existing last code here
+
+
+// ==========================================
+// BILLING CALCULATION
+// ==========================================
+
+function calculateBill() {
+
+    const medicine =
+        document.getElementById("medicine").value;
+
+    const quantity =
+        parseInt(document.getElementById("quantity").value);
+
+    let price = 0;
+
+    if (medicine.includes("Paracetamol")) {
+        price = 5;
+    }
+    else if (medicine.includes("Amoxicillin")) {
+        price = 6;
+    }
+    else if (medicine.includes("Cetirizine")) {
+        price = 2;
+    }
+    else if (medicine.includes("Vitamin C")) {
+        price = 2;
+    }
+
+    const total = price * quantity;
+
+document.getElementById("totalAmount").innerText =
+    "Total Amount: ₹" + total;
+
+document.getElementById("billingDetails").innerHTML = `.
+    <p><strong>Medicine:</strong> ${medicine}</p>
+    <p><strong>Quantity:</strong> ${quantity}</p>
+    <p><strong>Price per unit:</strong> ₹${price}</p>
+    <p><strong>Total:</strong> ₹${total}</p>
+`;
+}
